@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `portfolio2024`,
-    siteUrl: `https://www.yourdomain.tld`
+    title: `Matt Armstrong Portfolio`,
+    siteUrl: `https://matt-builds-the-web.com`,
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -33,6 +33,18 @@ module.exports = {
       options: {
         name: 'images',
         path: `${__dirname}/src/images/`
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Matt Armstrong Portfolio`,
+        short_name: `MA`,
+        start_url: `/`,
+        background_color: `#f3fcf9`,
+        theme_color: `#3ba74c`,
+        display: `standalone`,
+        icon: `src/images/leaf3.png`,
       },
     },
   ]

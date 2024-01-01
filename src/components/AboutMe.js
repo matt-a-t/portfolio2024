@@ -1,9 +1,5 @@
 import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
-// import nymBibi from '../images/nym-bibi.JPEG'
-// import pablo from '../images/pablo.jpeg'
-// import pabloBibi from '../images/pablo-bibi.JPEG'
-// import nym from '../images/nym.jpeg'
 
 function AboutMe() {
   return (
