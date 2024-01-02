@@ -15,7 +15,7 @@ function AboutMe() {
         </div>
         <div className='w-full md:w-1/2 p-10'>
           <p className='text-green-900'>
-            I live in Indianapolis with my best friend Chloe and our 3 dogs: Pablo, Nym, and Bibi.
+            I live in Indianapolis with my best friend and partner Chloe and our 3 dogs: Pablo, Nym, and Bibi.
             Alongside my passion for technology, I enjoy exploring the outdoors on foot or by bike.
             My best ideas come to me when I am out in nature, so I try to spend as much time as I can
             outside. I love fantasy and science fiction and am often found with my nose in a book.
