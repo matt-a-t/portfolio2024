@@ -62,6 +62,11 @@ function IndexPage() {
 
 export default IndexPage
 
-const Header = (props) => <h2 className="text-4xl text-green-600" id={props.text}>{props.text}</h2>
+const Header = (props) => (
+  <h2 className="text-4xl text-green-600 py-12" id={props.text}>
+    {props.text}
+  </h2>
+);
+
 const Section = (props) => <section className="p-10">{props.children}</section>
 export const Head = () => <title>Matt Armstrong</title>

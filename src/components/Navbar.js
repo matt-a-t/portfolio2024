@@ -7,7 +7,7 @@ function Navbar() {
     const onScroll = e => {
       const newScroll = e.target.documentElement.scrollTop
       if (newScroll > scroll) {
-        document.querySelector('.border-b').style.top = '-100px'
+        document.querySelector('.border-b').style.top = '-110px'
       } else {
         document.querySelector('.border-b').style.top = '0'
       }
@@ -21,14 +21,19 @@ function Navbar() {
   return (
     <div className='hidden md:flex border-b sticky top-0 bg-green-200 transition-all'>
       <nav className='flex space-between'>
-        <a href='/' className='flex place-items-center bg-altwhite pr-16'>
+        <a href='#top' className='flex place-items-center bg-altwhite pr-16'>
           <img src={leaf} alt='A minimalist green leaf icon' className='h-10 m-5' />
           <p className='text-green-900'>Matt Armstrong</p>
         </a>
         <span className='flex ml-10 text-green-600'>
-          <a href='#Skills' className='flex place-items-center m-5'>Skills</a>
-          <a href='#Work' className='flex place-items-center m-5'>Work</a>
-          <a href='#About Me' className='flex place-items-center m-5'>About Me</a>
+          {['Skills', 'Work', 'About Me'].map((item) =>
+            <a
+              href={`#${item}`}
+              className='flex hover:bg-green-100 place-items-center p-5 m-5'
+            >
+              {item}
+            </a>
+          )}
         </span>
       </nav>
     </div>
