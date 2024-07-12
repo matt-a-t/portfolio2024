@@ -24,11 +24,12 @@ function IndexPage() {
           implementation of several key features in our applications.'
           link='https://www.ciswired.com'
         />
-        <WorkItem title='Craft Raft'
-          description='Early in the ideation process, Craft Raft is a solution for crafters to share their tools with one another
-          and allow new crafters to try out new hobbies without the upfront cost of buying all the tools.
-          I am currently working on the MVP for this project and hope to launch it soon. Please stay tuned.'
-          link='/craft-raft'
+        <WorkItem title='YouMineTubeCraft'
+          description='YouMineTubeCraft is a project that I started with a friend of mine. It is a Discord bot
+          that checks for a youtube channel subscription and allows a user to be whitelisted on a Nodecraft
+          server. The bot is written in Node.js and uses the Discord.js library. The bot is currently in development
+          and is not yet available for public use but the code is open source.'
+          link='https://github.com/matt-a-t/YouMineTubeCraft'
         />
         <WorkItem title='City of Bloomington uReport Client'
           description='Working with two other very talented developers, I entered a winning project into the Bloomington Civic Code Challenge at
