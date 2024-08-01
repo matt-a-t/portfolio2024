@@ -80,7 +80,7 @@ function Skills() {
             'HR Managment',
           ]
         },
-      ].map((skill) => <Skill skill={skill} />)}
+      ].map((skill) => <Skill key={skill.header} skill={skill} />)}
     </ul>
   )
 }
@@ -103,7 +103,7 @@ function Skill({ skill }) {
       document.body.removeEventListener('click', handleBodyClick);
     }
     return () => document.body.removeEventListener('click', handleBodyClick);
-  }, [open]);
+  }, [open, skill.header]);
 
   return (
     <div id={`skill-${skill.header}`} className='m-2 md:m-5 self-start'>
@@ -125,7 +125,7 @@ function Skill({ skill }) {
           pt-0
         `}>
           {skill.tools.map((tool) =>
-            <p className='text-green-900 pt-4'>{tool}</p>
+            <p key={tool} className='text-green-900 pt-4'>{tool}</p>
           )}
         </ul>
       }

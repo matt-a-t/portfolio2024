@@ -19,7 +19,7 @@ function Navbar() {
   }, [scroll])
 
   return (
-    <div className='hidden md:flex border-b sticky top-0 bg-green-200 transition-all'>
+    <div className='hidden md:flex border-b sticky top-0 bg-green-200 transition-all z-10'>
       <nav className='flex space-between'>
         <a href='#top' className='flex place-items-center bg-altwhite pr-16'>
           <img src={leaf} alt='A minimalist green leaf icon' className='h-10 m-5' />
@@ -29,6 +29,7 @@ function Navbar() {
           {['Skills', 'Work', 'About Me'].map((item) =>
             <a
               href={`#${item}`}
+              key={item}
               className='flex hover:bg-green-100 place-items-center p-5 m-5'
             >
               {item}

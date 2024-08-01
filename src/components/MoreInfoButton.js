@@ -10,7 +10,7 @@ function MoreInfoButton({ link, onClick }) {
   }
 
   return (
-    <button onClick={hanldeClick} className='text-green-900 border border-green-900 p-2'>More info...</button>
+    <button onClick={hanldeClick} className='text-green-900 underline p-2'>More info...</button>
   );
 }
 
