@@ -111,3 +111,88 @@ Next up, getting the styling right and only showing one picture at a time.
 
 ### Carouselling the caroursel
 
+So how to decide which photo to show. First I looked up some designs on (Dribbble for carousels)[https://dribbble.com/tags/carousel]. I noticed that a number like to have the next and previous pictures, so I'd like to include that with the current photo. To accomplish this:
+
+```
+function Carousel() {
+  const [active, setActive] = useState(0);
+
+  const data = useStaticQuery(...queryFromAbove...);
+  const photos = data.allFile.edges;
+
+  const max = photos.length - 1;
+  const isFirst = active === 0;
+  const isLast = active === max;
+  const previous = isFirst ? max : active - 1;
+  const next = isLast ? 0 : active + 1;
+
+  function handleNext() {
+    setActive(next);
+  }
+
+  function handlePrevious() {
+    setActive(previous);
+  }
+
+  const prevPhoto = getImage(photos[previous].node.childImageSharp);
+  const activePhoto = getImage(photos[active].node.childImageSharp);
+  const nextPhoto = getImage(photos[next].node.childImageSharp);
+
+  return (
+    <div className='w-full md:w-1/2 flex items-center'>
+      <CarouselButtonPhoto direction='left' onClick={handlePrevious} photo={prevPhoto} alt={photos[previous].node.name} />
+      <div className='size-1/2 bg-green-200'>
+        <GatsbyImage image={activePhoto} alt={photos[active].node.name} />
+      </div>
+      <CarouselButtonPhoto direction='right' onClick={handleNext} photo={nextPhoto} alt={photos[next].node.name} />
+    </div>
+  );
+}
+```
+
+After this, we have the implementation of CarouselButtonPhoto. 
+
+```
+function CarouselButtonPhoto({ direction, onClick, photo, alt }) {
+  const [prevEffect, setPrevEffect] = useState(false);
+  const [nextEffect, setNextEffect] = useState(false);
+
+  function clearAnimation() {
+    setPrevEffect(false);
+    setNextEffect(false);
+  }
+
+  function handleClick() {
+    if (direction === 'left') {
+      setPrevEffect(true);
+    } else {
+      setNextEffect(true);
+    }
+    onClick();
+  }
+
+  return (
+    <button
+      className={`
+        size-1/4
+        relative
+        cursor-pointer
+        duration-500
+        bg-green-200
+        ${prevEffect && 'animate-out slide-out-to-left-2'}
+        ${nextEffect && 'animate-out slide-out-to-right-2'}
+      `}
+      onClick={handleClick}
+      onAnimationEnd={() => clearAnimation()}
+    >
+      <ArrowButton direction={direction} onClick={onClick} />
+      <GatsbyImage image={photo} alt={alt} />
+    </button>
+  );
+}
+
+export default CarouselButtonPhoto;
+```
+
+And there it is. In my opinion less is more on the animation, and the small button movement lets the user know that their input has been recieved. This carosel will update based on the photos put into the carousel directory and cycle through as a component on a Gatsby site.
+

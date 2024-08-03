@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useStaticQuery, graphql } from 'gatsby';
-import ArrowButton from './ArrowButton';
-import CarouselButton from './CarouselButton';
+import CarouselButtonPhoto from './CarouselButtonPhoto';
 
 function Carousel() {
   const [active, setActive] = useState(0);
-  const [prevEffect, setPrevEffect] = useState(false);
-  const [nextEffect, setNextEffect] = useState(false);
 
   const data = useStaticQuery(graphql`
     query {
@@ -26,20 +23,19 @@ function Carousel() {
       }
     }
   `);
-
   const photos = data.allFile.edges;
-  const max = photos.length - 1;
 
-  const next = active === max ? 0 : active + 1;
-  const previous = active === 0 ? max : active - 1;
+  const max = photos.length - 1;
+  const isFirst = active === 0;
+  const isLast = active === max;
+  const previous = isFirst ? max : active - 1;
+  const next = isLast ? 0 : active + 1;
 
   function handleNext() {
-    setNextEffect(true);
     setActive(next);
   }
 
   function handlePrevious() {
-    setPrevEffect(true);
     setActive(previous);
   }
 
@@ -49,14 +45,11 @@ function Carousel() {
 
   return (
     <div className='w-full md:w-1/2 flex items-center'>
-      <CarouselButton direction='left' onClick={handlePrevious} photo={prevPhoto} alt={photos[previous].node.name} />
-      <div className='size-1/2'>
+      <CarouselButtonPhoto direction='left' onClick={handlePrevious} photo={prevPhoto} alt={photos[previous].node.name} />
+      <div className='size-1/2 bg-green-200'>
         <GatsbyImage image={activePhoto} alt={photos[active].node.name} />
       </div>
-      <div className='size-1/4 relative cursor-pointer' onClick={handleNext}>
-        <ArrowButton direction='right' onClick={handleNext} />
-        <GatsbyImage image={nextPhoto} alt={photos[next].node.name} />
-      </div>
+      <CarouselButtonPhoto direction='right' onClick={handleNext} photo={nextPhoto} alt={photos[next].node.name} />
     </div>
   );
 }
