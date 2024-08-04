@@ -18,7 +18,7 @@ function ArrowButton({ direction, onClick }) {
       `}
       onClick={onClick}
     >
-      {direction === 'left' ? '◀' : '▶'}
+      {direction === 'left' ? '<' : '>'}
     </span>
   );
 }
