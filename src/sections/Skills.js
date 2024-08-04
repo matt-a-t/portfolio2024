@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import MoreInfoButton from './MoreInfoButton'
+import MoreInfoButton from '../components/MoreInfoButton'
 
 function Skills() {
   return (
